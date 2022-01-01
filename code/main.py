@@ -1,6 +1,6 @@
 # CONFIG (defaults)
-ssid="I'm Not Gonna Tell You"
-ssidPass = "MegLogWillEmb7040"
+ssid="Your SSID"
+ssidPass = "Your SSID Password"
 interval=3
 title="office"
 dht=14
