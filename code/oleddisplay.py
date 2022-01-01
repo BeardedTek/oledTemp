@@ -23,7 +23,12 @@ class oledDisplay:
     def printFreeSans20(self,text,start=0,width=128,hzJustification='center',padding=0,top=30):
         if hzJustification == 'center':
             textlen=self.freesans20.stringlen(text)
-            self.freesans20.set_textpos(((start+(width-textlen))//2)+padding,top)
+            #print('[DEBUG][printFreeSans20]: %i+(%i-%i)/2'%(start,width,textlen))
+            tmp = width-textlen
+            tmp = start+tmp
+            tmp = tmp/2
+            #print('[DEBUG][printFreeSans20]: %i'%tmp)
+            self.freesans20.set_textpos(start+((width-textlen)//2)+padding,top)
             self.freesans20.printstring(text)
         elif hzJustification == 'left':
             self.freesans20.set_textpos(start+padding,top)
@@ -36,7 +41,7 @@ class oledDisplay:
 
     def startupDisplay(self):
         self.display.text(self.title,5,0,1)
-        self.centerFreeSans20(self.startupText)
+        self.printFreeSans20(self.startupText,0,128,'center',0,30)
         self.display.show()
         
     def displayOff(self):
@@ -63,11 +68,12 @@ class oledDisplay:
         rhImage=self.loadImage('percent.pbm')
         if self.display:
             self.display.fill(0)
-            self.display.rect(0,29,64,64,1)
+            self.display.rect(0, 29, 128, 34, 1)
+            self.display.line(64,29,64,64,1)
             self.display.blit(tempImage,28,52)
             self.display.blit(rhImage,92,52)
             self.display.text(self.title,5,0,1)
             self.display.text(ip,5,16,1)
-            self.printFreeSans20(temp,0,64,'center',0,30)
-            self.printFreeSans20(rh,64,64,'center',0,30)
+            self.printFreeSans20(str(temp),0,64,'center',0,30)
+            self.printFreeSans20(str(rh),64,64,'center',0,30)
             self.display.show()

@@ -59,9 +59,9 @@ class Writer():
                 else framebuf.MONO_HLSB
         else:
             raise ValueError('Font must be horizontally mapped.')
-        if verbose:
-            print('Orientation: {} Reversal: {}'.format('horiz' \
-                if font.hmap() else 'vert', font.reverse()))
+        #if verbose:
+        #    print('Orientation: {} Reversal: {}'.format('horiz' \
+        #        if font.hmap() else 'vert', font.reverse()))
         self.screenwidth = device.width  # In pixels
         self.screenheight = device.height
 
