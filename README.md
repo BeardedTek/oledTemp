@@ -1,5 +1,5 @@
 # oledTemp
-## v0.1 - Initial Release
+## v0.1 - Initial Upload NOT GUARANTEED TO WORK!!!!!!!!!!!!!
 
 ## Hardware Config
 - DHT11
