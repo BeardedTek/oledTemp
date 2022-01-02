@@ -12,6 +12,7 @@ class oledTemp:
         self.screenOn = True
         self.screenTimeout = timeout
         self.dhtRead = False
+        self.init = True
     
     def start(self):
         import time
@@ -50,7 +51,9 @@ class oledTemp:
 
                 timeout = self.lastTime + self.updateInterval
                 #print('[DEBUG]: timeout: %s, curTime: %s '%(timeout,self.curTime))
-                if timeout < self.curTime:
+                if timeout < self.curTime or self.init:
+                    if self.init:
+                        self.init = False
                     self.lastTime = self.curTime
                     while not self.dhtRead:
                         try:
