@@ -1,14 +1,10 @@
-# CONFIG (defaults)
-ssid="Your SSID"
-ssidPass = "Your SSID Password"
-interval=3
-title="office"
-dht=14
-btn=12
-sda=4
-scl=5
-timeout=30
+import config
+
+
+
+
+
 
 from loop import oledTemp
-oledtemp = oledTemp(ssid,ssidPass,interval,title,dht,btn,sda,scl,timeout)
+oledtemp = oledTemp(config.ssid,config.ssidPass,config.interval,config.title,config.dht,config.btn,config.sda,config.scl,config.timeout)
 oledtemp.start()

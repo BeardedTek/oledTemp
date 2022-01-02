@@ -12,7 +12,7 @@ class MQTT:
 
     def publish(self,temp,rh,ip,mqttTime,mqttTitle):
         try:
-            msgStr="{\"temperature\":%s,\"humidity\":%s,\"ip_address\":%s,\"last_updated\":%s}"%(str(temp),str(rh),str(ip),str(mqttTime))
+            msgStr="{\"temperature\":%s,\"humidity\":%s,\"ip_address\":\"%s\",\"last_updated\":%s}"%(str(temp),str(rh),str(ip),str(mqttTime))
             msg = b'%s'%msgStr
             pub = 'oledtemp/%s'%mqttTitle
             self.mqttClient.publish(pub,msg)
