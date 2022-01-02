@@ -1,9 +1,0 @@
-ssid="Your SSID"
-ssidPass = "Your SSID Password"
-interval=3
-title="office"
-dht=14
-btn=12
-sda=4
-scl=5
-timeout=30
