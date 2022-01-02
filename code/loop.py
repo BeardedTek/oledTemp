@@ -11,6 +11,7 @@ class oledTemp:
         self.ssidPass = ssidPass
         self.screenOn = True
         self.screenTimeout = timeout
+        self.dhtRead = False
     
     def start(self):
         import time
@@ -51,13 +52,17 @@ class oledTemp:
                 #print('[DEBUG]: timeout: %s, curTime: %s '%(timeout,self.curTime))
                 if timeout < self.curTime:
                     self.lastTime = self.curTime
-                    try:
-                        sensors.getDHT11(self.dht)
-                        temperature = sensors.temp
-                        humidity = sensors.rh
-                        #print("[ INFO][dht11]: temp: %s, rh: %s"%(str(temperature),str(humidity)))
-                    except:
-                        print("[ERROR]: Can't Read DHT")
+                    while not self.dhtRead:
+                        try:
+                            sensors.getDHT11(self.dht)
+                            temperature = sensors.temp
+                            humidity = sensors.rh
+                            #print("[ INFO][dht11]: temp: %s, rh: %s"%(str(temperature),str(humidity)))
+                            self.dhtRead = True
+                        except:
+                            print("[ERROR]: Can't Read DHT, Retrying")
+                            self.dhtRead = False
+                        time.sleep(2)
                     #try:
                     if temperature != -1 and humidity != -1:
                         self.systemInit = False
