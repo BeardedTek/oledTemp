@@ -16,6 +16,8 @@
   - Gnd
 
 ## Install
+### - Copy config_example.py to config.py and edit the variables therein to suit your needs
+
 - esptool
   - pip3 install esptool
 - ampy
@@ -27,6 +29,8 @@
     - dnf install picocom
   - OpenSuse
     - zypper in picocom
+
+
 
 install.sh
 For use on an ESP8266 (I used a NodeMCU)
